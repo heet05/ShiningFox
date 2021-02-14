@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item1"
+        android:title="Home"
+        />
+
+    <item android:title="My Order"
+        android:id="@+id/item3"/>
+
+    <item android:title="My Cart"
+        android:id="@+id/item4"/>
+
+    <item android:title="Contact Us"
+        android:id="@+id/item5"/>
+
+    <item android:title="About Us"
+        android:id="@+id/item6"/>
+
+    <item android:title="Share App"
+        android:id="@+id/item7"/>
+
+    <item android:title="Terms And Conditions"
+        android:id="@+id/item8"/>
+
+    <item android:title="Logout"
+        android:id="@+id/item9"/>
+</menu>

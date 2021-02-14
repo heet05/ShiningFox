@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
+    tools:context=".RegistrationActivity">
+
+    <ImageView
+        android:id="@+id/reg_imageview"
+        android:layout_width="260dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/shiningfox" />
+
+    <EditText
+        android:id="@+id/reg_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_imageview"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_margin="52dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_call_24"
+        android:drawablePadding="10dp"
+        android:hint="Mobile"
+        android:inputType="phone"
+        android:padding="10dp"
+        android:textSize="18sp" />
+
+    <EditText
+        android:visibility="gone"
+        android:id="@+id/reg_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_mobile"
+        android:layout_marginHorizontal="25dp"
+        android:background="@color/white"
+        android:hint="Enter OTP"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:layout_margin="52dp"
+        android:drawableLeft="@drawable/ic_baseline_call_24"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="10dp"
+        android:inputType="number"/>
+
+    <Button
+        android:visibility="gone"
+        android:textColor="@android:color/white"
+        android:id="@+id/reg_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_otp"
+        android:layout_marginHorizontal="55dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_light"
+        android:text="Submit"/>
+
+    <Button
+        android:textColor="@android:color/white"
+        android:id="@+id/reg_sendotp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_mobile"
+        android:layout_marginHorizontal="55dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_light"
+        android:text="Send OTP"/>
+
+</RelativeLayout>

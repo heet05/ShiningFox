@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ShiningFox</string>
+    <string name="navigation_drawer_open" />
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+
+    </style>
+    <string name="navigation_drawer_close" />
+</resources>
