@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
     android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="6dp"
+        android:layout_margin="16dp"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+      <com.denzcoskun.imageslider.ImageSlider
+          android:layout_width="match_parent"
+          android:layout_height="214dp"
+          android:id="@+id/slider"
+          app:iss_auto_cycle="true"
+          app:iss_delay="0"
+          app:iss_period="1000"
+          app:iss_corner_radius="5"/>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="5dp"
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/card_view"/>
+</RelativeLayout>

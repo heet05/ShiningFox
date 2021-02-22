@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageView = findViewById(R.id.iv);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         AlphaAnimation animation = new AlphaAnimation(0,1);
         //animation.setRepeatCount(4);
         animation.setDuration(500);

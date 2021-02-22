@@ -13,7 +13,7 @@
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:src="@drawable/shiningfox" />
+        android:src="@drawable/singsplash" />
 
     <EditText
         android:id="@+id/reg_mobile"

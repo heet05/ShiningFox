@@ -102,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
                     switch (item.getItemId()){
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
-                            setTitle("ShiningFox");
+                            setTitle("SingFox");
                             break;
                         case R.id.nav_order:
                             selectedFragment = new OrderFragment();
