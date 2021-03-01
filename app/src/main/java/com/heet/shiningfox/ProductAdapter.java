@@ -1,13 +1,16 @@
 package com.heet.shiningfox;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -48,6 +51,16 @@ FirebaseFirestore firestore;
         holder.price.setText(modelList.get(position).getPrice());
         Glide.with(context).load(modelList.get(position).getImage()).into(holder.imageView);
         holder.dec.setText(modelList.get(position).getDec());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context,DetailActivity.class);
+                intent.putExtra("pid",modelList.get(position).getPid());
+                context.startActivities(new Intent[]{intent});
+
+
+            }
+        });
     }
 
 
@@ -60,7 +73,7 @@ FirebaseFirestore firestore;
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView title,dec,price;
         ImageView imageView;
-
+        CardView cardView;
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);
@@ -68,6 +81,7 @@ FirebaseFirestore firestore;
             dec=itemView.findViewById(R.id.item_dec);
             price=itemView.findViewById(R.id.item_Price);
             imageView=itemView.findViewById(R.id.item_image);
+            cardView=itemView.findViewById(R.id.card_view1);
         }
     }
 }

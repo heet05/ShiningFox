@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -74,7 +75,7 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
                     slideModels.add(new SlideModel(data.child("url").getValue().toString(), ScaleTypes.FIT));
-                    imageSlider.setImageList(slideModels, ScaleTypes.FIT);
+                   imageSlider.setImageList(slideModels, ScaleTypes.FIT);
 
                 }
 
