@@ -1,6 +1,8 @@
 package com.heet.shiningfox;
 
-public class detailModel {
+import java.io.Serializable;
+
+public class DetailModel implements Serializable {
     String title;
     String price;
     String total;

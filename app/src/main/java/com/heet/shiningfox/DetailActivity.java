@@ -1,61 +1,41 @@
 package com.heet.shiningfox;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.heet.shiningfox.databinding.ActivityDetailBinding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements OnAddToCartListner {
+RecyclerView recyclerView;
 
-    Spinner spinner,spinner1;
-    ImageView imageView;
-    TextView title;
-    TextView price;
-    TextView dec;
-    String pId;
-    Button button;
-detailModel detailModel;
+DetailModel detailModel;
+    DetailAdapter detailAdapter;
 
-    String[] size = new String[]{"S", "M", "L", "Xl"};
-    String[] Qty = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+List<ProModel>list=new ArrayList<>();
+
 String mobile="";
-ProModel proModel;
+
     SharedPreferences preferences;
+    private Object OnAddToCartListner;
+ProModel proModel;
+String pId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,56 +44,51 @@ ProModel proModel;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        spinner = findViewById(R.id.spinner);
-        spinner1 = findViewById(R.id.spinner1);
-        imageView = findViewById(R.id.image_view);
-        title = findViewById(R.id.title1);
-        price = findViewById(R.id.price1);
-        dec = findViewById(R.id.dec);
-        button = findViewById(R.id.btn);
-        pId = getIntent().getStringExtra("pid");
+        pId= getIntent().getStringExtra("pid");
         preferences = getSharedPreferences("Users", 0);
         mobile = preferences.getString("userMobile", "");
-        List<String> Sizelist = new ArrayList<>(Arrays.asList(size));
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, Sizelist);
-        spinner.setAdapter(spinnerArrayAdapter);
-        List<String> Qtylist = new ArrayList<>(Arrays.asList(Qty));
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, Qtylist);
-        spinner1.setAdapter(arrayAdapter);
-        FirebaseFirestore.getInstance().collection("product").whereEqualTo("pid", pId).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if (value != null && !value.isEmpty()) {
-                    ProModel proModel = value.getDocuments().get(0).toObject(ProModel.class);
-                    title.setText(proModel.getTitle());
-                    Glide.with(DetailActivity.this).load(proModel.getImage()).into(imageView);
-                    price.setText(proModel.getPrice());
-                    dec.setText(proModel.getDec());
+        recyclerView=findViewById(R.id.rv);
+        Query query=FirebaseFirestore.getInstance().collection("product").whereEqualTo("pid",pId);
 
-                }
-            }
-        });
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                detailModel Model=new detailModel();
-                AddToCart(Model);
-            }
-        });
+
+        FirestoreRecyclerOptions rvOption = new FirestoreRecyclerOptions.Builder<ProModel>()
+                .setQuery(query,ProModel.class).build();
+
+
+//        FirestoreRecyclerOptions<> rvOptions = new FirestoreRecyclerOptions.Builder<OrderModel>()
+//                .setQuery(query, OrderModel.class).build();
+
+        LinearLayoutManager  linearLayoutManager=new LinearLayoutManager(this);
+       detailAdapter=new DetailAdapter(this,rvOption,this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(detailAdapter);
 
     }
 
-    private void AddToCart(com.heet.shiningfox.detailModel detailModel) {
-        CartModel cartModel = new CartModel();
-        cartModel.setTitle(detailModel.getTitle());
-        cartModel.setImage(detailModel.getImage());
-        cartModel.setQty(spinner1.getSelectedItem().toString());
-        //   cartModel.setPid(proModel.getPid());
-        cartModel.setDec(detailModel.getDec());
 
-        cartModel.setPrice(detailModel.getPrice());
-        cartModel.setSize(spinner.getSelectedItem().toString());
-        cartModel.setTotal(String.valueOf(Integer.parseInt(price.getText().toString()) * Integer.parseInt(spinner1.getSelectedItem().toString())));
+
+        
+
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
+
+    }
+
+    @Override
+    public void AddToCart(ProModel model) {
+        CartModel cartModel = new CartModel();
+        cartModel.setTitle(model.getTitle());
+        cartModel.setImage(model.getImage());
+        cartModel.setQty(model.getQty());
+        //   cartModel.setPid(proModel.getPid());
+        cartModel.setDec(model.getDec());
+
+        cartModel.setPrice(model.getPrice());
+        cartModel.setSize(model.getSize());
+        cartModel.setTotal(String.valueOf(Integer.parseInt(model.getPrice()) * Integer.parseInt(model.getQty())));
         FirebaseFirestore.getInstance().collection("USERS")
                 .document(mobile)
                 .collection("USERCART")
@@ -139,11 +114,15 @@ ProModel proModel;
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        detailAdapter.startListening();
+    }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return super.onSupportNavigateUp();
-
+    protected void onStop() {
+        super.onStop();
+        detailAdapter.stopListening();
     }
 }
