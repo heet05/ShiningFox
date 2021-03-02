@@ -59,7 +59,7 @@ String pId;
 //                .setQuery(query, OrderModel.class).build();
 
         LinearLayoutManager  linearLayoutManager=new LinearLayoutManager(this);
-       detailAdapter=new DetailAdapter(this,rvOption,this);
+       detailAdapter=new DetailAdapter(this,rvOption, this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(detailAdapter);
 
@@ -77,18 +77,34 @@ String pId;
 
     }
 
+
+
+
     @Override
-    public void AddToCart(ProModel model) {
+    protected void onStart() {
+        super.onStart();
+        detailAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        detailAdapter.stopListening();
+    }
+
+
+    @Override
+    public void AddToCart(ProModel model, Object selectedItem, Object selectedItem1) {
         CartModel cartModel = new CartModel();
         cartModel.setTitle(model.getTitle());
         cartModel.setImage(model.getImage());
-        cartModel.setQty(model.getQty());
+        cartModel.setQty(selectedItem1.toString());
         //   cartModel.setPid(proModel.getPid());
         cartModel.setDec(model.getDec());
 
         cartModel.setPrice(model.getPrice());
-        cartModel.setSize(model.getSize());
-        cartModel.setTotal(String.valueOf(Integer.parseInt(model.getPrice()) * Integer.parseInt(model.getQty())));
+         cartModel.setSize(selectedItem.toString());
+        cartModel.setTotal(String.valueOf(Integer.parseInt(model.getPrice()) * Integer.parseInt(selectedItem1.toString())));
         FirebaseFirestore.getInstance().collection("USERS")
                 .document(mobile)
                 .collection("USERCART")
@@ -112,17 +128,5 @@ String pId;
                 Toast.makeText(DetailActivity.this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        detailAdapter.startListening();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        detailAdapter.stopListening();
     }
 }

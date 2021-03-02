@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/l1"
-        app:layout_constraintBottom_toTopOf="@+id/btn"
+        app:layout_constraintBottom_toTopOf="@id/btn1"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -79,7 +79,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add to Cart"
