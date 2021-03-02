@@ -4,8 +4,6 @@ public class ProModel {
     String title;
     String price;
     String total;
-    String qty;
-    String size;
     String image;
     String dec;
     String pid;
@@ -42,21 +40,7 @@ public class ProModel {
         this.total = total;
     }
 
-    public String getQty() {
-        return qty;
-    }
 
-    public void setQty(String qty) {
-        this.qty = qty;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
 
     public String getImage() {
         return image;
