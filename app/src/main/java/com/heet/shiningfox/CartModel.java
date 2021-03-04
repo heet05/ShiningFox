@@ -7,8 +7,15 @@ public class CartModel {
     String qty;
     String size;
     String image;
-    String siz;
+    String cartItemId;
 
+    public String getCartItemId() {
+        return cartItemId;
+    }
+
+    public void setCartItemId(String cartItemId) {
+        this.cartItemId = cartItemId;
+    }
 
     public String getTitle() {
         return title;
