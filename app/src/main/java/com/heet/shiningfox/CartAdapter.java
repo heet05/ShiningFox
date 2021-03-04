@@ -46,7 +46,7 @@ public class CartAdapter  extends FirestoreRecyclerAdapter<CartModel,CartAdapter
       //  preferences=cartFragment.getSharedPreferences("Users", Context.MODE_PRIVATE);
 
         // holder.product_kg_gm.setText(" Per " + list.get(position).getProduct_kg_gm());
-
+            holder.size.setText(model.getSize());
      //   holder.cart_total_price.setText(" ₹ " + (Integer.parseInt(model.getQty()) *Integer.parseInt(model.getPrice())));
         //  holder.cart_total_price.setText(model.getTotal());
         holder.cart_number.setText(model.getQty());
@@ -128,7 +128,7 @@ public class CartAdapter  extends FirestoreRecyclerAdapter<CartModel,CartAdapter
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView cart_name, cart_price, cart_kg_gm, cart_total, cart_total_price, cart_number;
+        TextView cart_name, cart_price, cart_kg_gm, cart_total, cart_total_price, cart_number,size;
         ImageView cart_image;
         ImageButton cart_remove, cart_add, cart_edit, cart_delete,cart_update;
         public ViewHolder(@NonNull View itemView) {
@@ -144,6 +144,7 @@ public class CartAdapter  extends FirestoreRecyclerAdapter<CartModel,CartAdapter
             cart_edit = itemView.findViewById(R.id.cart_edit);
             cart_delete = itemView.findViewById(R.id.cart_delete);
             cart_update = itemView.findViewById(R.id.cart_update);
+            size=itemView.findViewById(R.id.cart_size1);
         }
     }
 }

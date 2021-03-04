@@ -45,6 +45,25 @@
 
 
                 <TextView
+                    android:id="@+id/cart_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cart_name"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/cart_price"
+                    android:text="Size=" />
+                <TextView
+                    android:id="@+id/cart_size1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cart_name"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/cart_size"
+                     />
+
+                <TextView
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"

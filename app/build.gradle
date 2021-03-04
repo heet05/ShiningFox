@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.shiningfox"
-        minSdkVersion 16
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -88,4 +88,6 @@ dependencies {
 
     // FirebaseUI for Cloud Storage
     implementation 'com.firebaseui:firebase-ui-storage:6.2.0'
+    implementation 'com.payumoney.sdkui:plug-n-play:1.6.0'
+
 }
