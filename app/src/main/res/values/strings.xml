@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SingFox</string>
+    <string name="app_name">SignFox</string>
     <string name="navigation_drawer_open" />
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">

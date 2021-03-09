@@ -89,6 +89,7 @@ public class Check_Out_Activity extends AppCompatActivity {
                 String Email = screen.checkoutEmail.getText().toString().trim();
                 String Phone = screen.checkoutMobilenumber.getText().toString().trim();
                 String Address = screen.checkoutAddress.getText().toString().trim();
+                String Pincode=screen.pincode.getText().toString().trim();
 
                 if (TextUtils.isEmpty(Name)) {
                     screen.checkoutName.setError("Enter Your Name");
@@ -106,17 +107,24 @@ public class Check_Out_Activity extends AppCompatActivity {
                     screen.checkoutAddress.setError("Enter Your Address");
 
                 }
-                if (Phone.length() < 10) {
+                if (Phone.length() < 10 ) {
                     screen.checkoutMobilenumber.setError("Phone Number Must be 10 number ");
 
 
-                } else {
+                }
+                if (Pincode.length() <6 ) {
+                    screen.pincode.setError("Pincode number ");
+
+
+                }
+                else {
                     OrderModel model = new OrderModel();
                     model.setName(screen.checkoutName.getText().toString());
                     model.setEmail(screen.checkoutEmail.getText().toString());
                     model.setNumber(screen.checkoutMobilenumber.getText().toString());
                     model.setAddress(screen.checkoutAddress.getText().toString());
                     model.setTotal(total);
+                    model.setPincode(screen.pincode.getText().toString());
                     model.setDeliverTime(screen.checkoutSpinner.getSelectedItem().toString());
                     model.setTimestamp(null);
                     if (screen.radiogroup1.getCheckedRadioButtonId() == R.id.cash) {

@@ -5,5 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AboutUsActivity">
+    <ScrollView
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+    <TextView
+        android:id="@+id/terms_and_condition_tv1"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:text="About us:-"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
+        <TextView
+            android:id="@+id/terms_and_condition_tv2"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_below="@id/terms_and_condition_tv1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="Who Is SignFox ?:-"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:id="@+id/terms_and_condition_tv3"
+        android:layout_below="@id/terms_and_condition_tv2"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:text="We are vertical specific e-commerce app dealing in Essential Products and Accessories like  Every Clothing  etc.
+
+We are a team of excessively cool people working day  to bring you the most awesome products and the most awesome prices. Here at SignFox our focus is on customer satisfaction. We aspire to provide our customers with the best experience, and we back it up with uncompromising integrity. Plus humor, fun, and good looks (take our word for it!)
+
+We care: We provide our customers with quality products at lower prices, That doesn't happen often when it does, you can count on us to make it right.
+
+We sell good stuff:. Hear it from our customers:  great satisfaction in the rave reviews and feedback from customers on our Facebook page because we pride ourselves on our commitment to our customers. Yes, that means we lose money occasionally but to us, providing exemplary customer service is most important."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

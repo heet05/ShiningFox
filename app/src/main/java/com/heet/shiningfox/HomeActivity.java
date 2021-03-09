@@ -73,6 +73,10 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(new Intent(HomeActivity.this,TermsAndConditionActivity.class));
                         break;
                     case R.id.item9:
+                        startActivity(new Intent(HomeActivity.this,PrivacyPolicyActivity.class));
+                        break;
+
+                    case R.id.item10:
                         editor.clear();
                         editor.commit();
                         startActivity(new Intent(HomeActivity.this,RegistrationActivity.class));
@@ -102,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
                     switch (item.getItemId()){
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
-                            setTitle("SingFox");
+                            setTitle("SignFox");
                             break;
                         case R.id.nav_order:
                             selectedFragment = new OrderFragment();

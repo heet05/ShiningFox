@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SingFox">
-        <activity android:name=".OrderDetaliActivity"></activity>
+        <activity android:name=".PrivacyPolicyActivity"></activity>
+        <activity android:name=".OrderDetaliActivity" />
         <activity android:name=".PaymentActivity" />
         <activity android:name=".Check_Out_Activity" />
         <activity android:name=".OffersActivity" />

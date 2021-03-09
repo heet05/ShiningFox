@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-public class ContactUsActivity extends AppCompatActivity {
+public class PrivacyPolicyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_us);
+        setContentView(R.layout.activity_privacy_policy);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }

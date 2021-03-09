@@ -18,6 +18,15 @@ public class OrderModel  implements Serializable {
     String deliverTime;
     String PayMentMethod;
     List<CheckModel> modelList;
+    String Pincode;
+
+    public String getPincode() {
+        return Pincode;
+    }
+
+    public void setPincode(String pincode) {
+        Pincode = pincode;
+    }
 
     public String getOrderId() {
         return orderId;
